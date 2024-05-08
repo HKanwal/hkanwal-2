@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
 
 
 ---
@@ -7,13 +8,16 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="hkanwal.com">
 	<main>
 		<h1>Harkeerat Kanwal</h1>
-		<section>
-			A full-stack software engineer, web developer and mobile app developer.
+		<section id="brief">
+			Web Developer - Mobile App Developer - Full-Stack Engineer
 		</section>
 		<div id="links">
-			<div class="badge">
-				<img src="/favicon-github.svg" height="42px" width="42px" />
-			</div>
+			<Badge href="https://github.com/HKanwal">
+				<img src="/favicon-github.svg" height="42px" width="42px" alt="GitHub Logo" />
+			</Badge>
+			<Badge href="https://www.linkedin.com/in/hkanwal/" style="margin-left: 20px;">
+				<img src="/favicon-linkedin.svg" height="42px" width="42px" alt="LinkedIn Logo" />
+			</Badge>
 		</div>
 	</main>
 </Layout>
@@ -28,49 +32,31 @@ import Layout from "../layouts/Layout.astro";
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+
+		text-align: center
+	}
+
+	h1 {
+		font-size: 6em;
+		margin: 0;
+		margin-bottom: 1%;
+		letter-spacing: -2px;
+
+		background: url("red-and-blue-star.jpg") repeat;
+		background-position: 73% 50%;
+		background-clip: text;
+		color: transparent;
+		filter: saturate(1.5);
+	}
+
+	#brief {
+		font-size: 1.5em;
 	}
 
 	#links {
 		padding-top: 100px;
-	}
-
-	.badge {
 		display: flex;
-		width: 60px;
-		height: 60px;
-		align-items: center;
+		flex-direction: row;
 		justify-content: center;
-		border: 4px solid white;
-		border-radius: 20%;
-
-		--s: 90%;
-    --l: 60%;
-	}
-
-	.badge:hover {
-		cursor: pointer;
-		animation: rainbow 4s linear infinite;
-	}
-
-	@keyframes rainbow {
-		0% {
-			border-image: linear-gradient(45deg, hsl(0, var(--s), var(--l)), hsl(50, var(--s), var(--l)), hsl(100, var(--s), var(--l)), hsl(150, var(--s), var(--l)), hsl(200, var(--s), var(--l)), hsl(250, var(--s), var(--l)), hsl(300, var(--s), var(--l))) 5 5;
-		}
-
-		25% {
-			border-image: linear-gradient(135deg, hsl(0, var(--s), var(--l)), hsl(50, var(--s), var(--l)), hsl(100, var(--s), var(--l)), hsl(150, var(--s), var(--l)), hsl(200, var(--s), var(--l)), hsl(250, var(--s), var(--l)), hsl(300, var(--s), var(--l))) 5 5;
-		}
-
-		50% {
-			border-image: linear-gradient(225deg, hsl(0, var(--s), var(--l)), hsl(50, var(--s), var(--l)), hsl(100, var(--s), var(--l)), hsl(150, var(--s), var(--l)), hsl(200, var(--s), var(--l)), hsl(250, var(--s), var(--l)), hsl(300, var(--s), var(--l))) 5 5;
-		}
-
-		75% {
-			border-image: linear-gradient(315deg, hsl(0, var(--s), var(--l)), hsl(50, var(--s), var(--l)), hsl(100, var(--s), var(--l)), hsl(150, var(--s), var(--l)), hsl(200, var(--s), var(--l)), hsl(250, var(--s), var(--l)), hsl(300, var(--s), var(--l))) 5 5;
-		}
-
-		100% {
-			border-image: linear-gradient(45deg, hsl(0, var(--s), var(--l)), hsl(50, var(--s), var(--l)), hsl(100, var(--s), var(--l)), hsl(150, var(--s), var(--l)), hsl(200, var(--s), var(--l)), hsl(250, var(--s), var(--l)), hsl(300, var(--s), var(--l))) 5 5;
-		}
 	}
 </style>

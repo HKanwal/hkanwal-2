@@ -1,0 +1,171 @@
+---
+interface Props {
+	href: string;
+	style?: string;
+}
+
+const { href, style } = Astro.props;
+---
+
+<a class="badge" href={href} target="_blank" style={style}>
+	<div class="badge-border"></div>
+	<slot />
+</a>
+
+<style>
+	@property --r {
+		syntax: '<angle>';
+		initial-value: 135deg;
+		inherits: false;
+	}
+
+	@property --c1 {
+		syntax: '<color>';
+		initial-value: hsl(0, 50%, 60%);
+		inherits: false;
+	}
+
+	@property --c2 {
+		syntax: '<color>';
+		initial-value: hsl(50, 50%, 60%);
+		inherits: false;
+	}
+
+	@property --c3 {
+		syntax: '<color>';
+		initial-value: hsl(100, 50%, 60%);
+		inherits: false;
+	}
+
+	@property --c4 {
+		syntax: '<color>';
+		initial-value: hsl(150, 50%, 60%);
+		inherits: false;
+	}
+
+	@property --c5 {
+		syntax: '<color>';
+		initial-value: hsl(200, 50%, 60%);
+		inherits: false;
+	}
+
+	@property --c6 {
+		syntax: '<color>';
+		initial-value: hsl(250, 50%, 60%);
+		inherits: false;
+	}
+
+	@property --c7 {
+		syntax: '<color>';
+		initial-value: hsl(300, 50%, 60%);
+		inherits: false;
+	}
+
+	.badge {
+		display: flex;
+		position: relative;
+		width: 60px;
+		height: 60px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.badge-border {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: 20%;
+		padding: 4px;
+		background: white;
+		mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		mask-composite: exclude;
+	}
+
+	.badge-border:hover {
+		cursor: pointer;
+		background: linear-gradient(var(--r), var(--c1), var(--c2), var(--c3), var(--c4), var(--c5), var(--c6), var(--c7));
+		animation: rainbow 3s linear infinite;
+	}
+
+	@keyframes rainbow {
+		0% {
+			--c1: hsl(0, 90%, 60%);
+			--c2: hsl(50, 90%, 60%);
+			--c3: hsl(100, 90%, 60%);
+			--c4: hsl(150, 90%, 60%);
+			--c5: hsl(200, 90%, 60%);
+			--c6: hsl(250, 90%, 60%);
+			--c7: hsl(300, 90%, 60%);
+		}
+
+		14% {
+			--c1: hsl(300, 90%, 60%);
+			--c2: hsl(0, 90%, 60%);
+			--c3: hsl(50, 90%, 60%);
+			--c4: hsl(100, 90%, 60%);
+			--c5: hsl(150, 90%, 60%);
+			--c6: hsl(200, 90%, 60%);
+			--c7: hsl(250, 90%, 60%);
+		}
+
+		28% {
+			--c1: hsl(250, 90%, 60%);
+			--c2: hsl(300, 90%, 60%);
+			--c3: hsl(0, 90%, 60%);
+			--c4: hsl(50, 90%, 60%);
+			--c5: hsl(100, 90%, 60%);
+			--c6: hsl(150, 90%, 60%);
+			--c7: hsl(200, 90%, 60%);
+		}
+
+		42% {
+			--c1: hsl(200, 90%, 60%);
+			--c2: hsl(250, 90%, 60%);
+			--c3: hsl(300, 90%, 60%);
+			--c4: hsl(0, 90%, 60%);
+			--c5: hsl(50, 90%, 60%);
+			--c6: hsl(100, 90%, 60%);
+			--c7: hsl(150, 90%, 60%);
+		}
+
+		56% {
+			--c1: hsl(150, 90%, 60%);
+			--c2: hsl(200, 90%, 60%);
+			--c3: hsl(250, 90%, 60%);
+			--c4: hsl(300, 90%, 60%);
+			--c5: hsl(0, 90%, 60%);
+			--c6: hsl(50, 90%, 60%);
+			--c7: hsl(100, 90%, 60%);
+		}
+
+		71% {
+			--c1: hsl(100, 90%, 60%);
+			--c2: hsl(150, 90%, 60%);
+			--c3: hsl(200, 90%, 60%);
+			--c4: hsl(250, 90%, 60%);
+			--c5: hsl(300, 90%, 60%);
+			--c6: hsl(0, 90%, 60%);
+			--c7: hsl(50, 90%, 60%);
+		}
+
+		85% {
+			--c1: hsl(50, 90%, 60%);
+			--c2: hsl(100, 90%, 60%);
+			--c3: hsl(150, 90%, 60%);
+			--c4: hsl(200, 90%, 60%);
+			--c5: hsl(250, 90%, 60%);
+			--c6: hsl(300, 90%, 60%);
+			--c7: hsl(0, 90%, 60%);
+		}
+
+		100% {
+			--c1: hsl(0, 90%, 60%);
+			--c2: hsl(50, 90%, 60%);
+			--c3: hsl(100, 90%, 60%);
+			--c4: hsl(150, 90%, 60%);
+			--c5: hsl(200, 90%, 60%);
+			--c6: hsl(250, 90%, 60%);
+			--c7: hsl(300, 90%, 60%);
+		}
+	}
+</style>
