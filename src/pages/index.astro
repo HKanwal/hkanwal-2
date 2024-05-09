@@ -7,20 +7,45 @@ import Badge from "../components/Badge.astro";
 
 <Layout title="hkanwal.com">
 	<main>
-		<h1>Harkeerat Kanwal</h1>
+		<h1 id="name">Harkeerat Kanwal</h1>
 		<section id="brief">
 			Web Developer - Mobile App Developer - Full-Stack Engineer
 		</section>
-		<div id="links">
+		<div id="external-links">
 			<Badge href="https://github.com/HKanwal">
-				<img src="/favicon-github.svg" height="42px" width="42px" alt="GitHub Logo" />
+				<img src="/favicon-github.svg" height="46px" width="46px" alt="GitHub Logo" />
 			</Badge>
 			<Badge href="https://www.linkedin.com/in/hkanwal/" style="margin-left: 20px;">
-				<img src="/favicon-linkedin.svg" height="42px" width="42px" alt="LinkedIn Logo" />
+				<img src="/favicon-linkedin.svg" height="46px" width="46px" alt="LinkedIn Logo" />
 			</Badge>
+		</div>
+		<div id="menu">
+			<span class="menu-item"><a class="menu-link" href="#">My Work</a></span>
+			<span class="menu-item" style="margin-top: 10px;"><a class="menu-link" href="#">Contact Me</a></span>
 		</div>
 	</main>
 </Layout>
+
+<script>
+	let mouseX, mouseY;
+	let traX, traY;
+	const ww = window.innerWidth;
+
+	document.onmousemove = (e) => {
+		mouseX = e.pageX;
+		mouseY = e.pageY;
+		if (mouseX < ww / 2) {
+			traX = 73 - ((4 * (ww / 2 - mouseX)) / 450)
+		} else {
+			traX = 73 + ((4 * (mouseX - ww / 2)) / 450);
+		}
+    traY = ((4 * mouseY) / 450) + 50;
+		const el = document.getElementById("name");
+		if (el) {
+			el.style.backgroundPosition = traX + "% " + traY + "%";
+		}
+	};
+</script>
 
 <style>
 	main {
@@ -36,7 +61,7 @@ import Badge from "../components/Badge.astro";
 		text-align: center
 	}
 
-	h1 {
+	#name {
 		font-size: 6em;
 		margin: 0;
 		margin-bottom: 1%;
@@ -53,10 +78,50 @@ import Badge from "../components/Badge.astro";
 		font-size: 1.5em;
 	}
 
-	#links {
-		padding-top: 100px;
+	#external-links {
+		padding-top: 80px;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+	}
+
+	#menu {
+		margin-top: 80px;
+		font-size: 1.8em;
+
+		display: flex;
+		flex-direction: column;
+	}
+
+	.menu-link {
+		text-decoration: none;
+		color: #D6EEFF;
+		animation: cycle 8s linear infinite;
+	}
+
+	@keyframes cycle {
+		0% {
+			color: #D6EEFF;
+		}
+
+		20% {
+			color: #77B3F2;
+		}
+
+		40% {
+			color: #5A8ACE;
+		}
+
+		60% {
+			color: #885182;
+		}
+
+		80% {
+			color: #C9554E;
+		}
+
+		100% {
+			color: #D6EEFF;
+		}
 	}
 </style>
