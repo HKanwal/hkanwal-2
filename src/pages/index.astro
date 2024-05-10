@@ -1,20 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
-
-
 ---
 
 <Layout title="hkanwal.com">
 	<main>
 		<h1 id="name">Harkeerat Kanwal</h1>
 		<section id="brief">
-			Web Developer - Mobile App Developer - Full-Stack Engineer
+			web developer - mobile app developer - full-stack engineer
 		</section>
-		<!-- <div id="menu">
-			<span class="menu-item"><a class="menu-link" href="#">My Work</a></span>
-			<span class="menu-item" style="margin-top: 10px;"><a class="menu-link" href="#">Contact Me</a></span>
-		</div> -->
+		<Badge href="#" style="margin-top: 80px;" borderRadius="20px" padding="8px 25px">
+			<span id="works">works</span>
+		</Badge>
 		<div id="external-links">
 			<Badge href="https://github.com/HKanwal">
 				<img src="/favicon-github.svg" height="46px" width="46px" alt="GitHub Logo" />
@@ -55,14 +52,13 @@ import Badge from "../components/Badge.astro";
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* background-color: red; */
 	}
 
 	#name {
 		font-size: 6em;
 		margin: 0;
-		/* margin-bottom: 0.5%; */
 		letter-spacing: -2px;
+		line-height: 90%;
 
 		background: url("red-and-blue-star.jpg") repeat;
 		background-position: 73% 50%;
@@ -83,168 +79,24 @@ import Badge from "../components/Badge.astro";
 		justify-content: center;
 	}
 
-	#menu {
-		margin-top: 80px;
-		font-size: 1.8em;
+	#works {
+		font-size: 1.5em;
+		font-family: "Manrope", sans-serif;;
+		color: white;
 
+		height: 33px;
 		display: flex;
-		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 	}
 
 	#email {
 		color: white;
-		/* opacity: 0.5; */
 		font-size: 1em;
 		font-family: "Manrope", sans-serif;
 		font-weight: 500;
 		position: absolute;
 		bottom: 25px;
 		left: 15px;
-	}
-
-	@property --u1 {
-		syntax: '<color>';
-		initial-value: #D6EEFF;
-		inherits: false;
-	}
-
-	@property --u2 {
-		syntax: '<color>';
-		initial-value: #D6EEFF;
-		inherits: false;
-	}
-
-	@property --u3 {
-		syntax: '<color>';
-		initial-value: #D6EEFF;
-		inherits: false;
-	}
-
-	@property --u4 {
-		syntax: '<color>';
-		initial-value: #D6EEFF;
-		inherits: false;
-	}
-
-	@property --u5 {
-		syntax: '<color>';
-		initial-value: #D6EEFF;
-		inherits: false;
-	}
-
-	/* https://codepen.io/poopsplat/pen/MaedPx */
-	.menu-link {
-		text-decoration: none;
-		color: white;
-		/* background-image: linear-gradient(to right, var(--u1), var(--u2), var(--u3), var(--u4), var(--u5)); */
-		background-repeat: repeat-x;
-		background-position: 0% 95%;
-		background-size: 100% 2px;
-	}
-
-	.menu-link:hover {
-		opacity: 0.7;
-		animation: init 2s linear forwards, cycle 2s linear 2s infinite;
-	}
-
-	@keyframes init {
-		0% {
-			--u1: #D6EEFF;
-			--u2: #D6EEFF;
-			--u3: #D6EEFF;
-			--u4: #D6EEFF;
-			--u5: #D6EEFF;
-		}
-
-		20% {
-			--u1: #C9554E;
-			--u2: #D6EEFF;
-			--u3: #D6EEFF;
-			--u4: #D6EEFF;
-			--u5: #D6EEFF;
-		}
-
-		40% {
-			--u1: #885182;
-			--u2: #C9554E;
-			--u3: #D6EEFF;
-			--u4: #D6EEFF;
-			--u5: #D6EEFF;
-		}
-
-		60% {
-			--u1: #5A8ACE;
-			--u2: #885182;
-			--u3: #C9554E;
-			--u4: #D6EEFF;
-			--u5: #D6EEFF;
-		}
-
-		80% {
-			--u1: #77B3F2;
-			--u2: #5A8ACE;
-			--u3: #885182;
-			--u4: #C9554E;
-			--u5: #D6EEFF;
-		}
-
-		100% {
-			--u1: #D6EEFF;
-			--u2: #77B3F2;
-			--u3: #5A8ACE;
-			--u4: #885182;
-			--u5: #C9554E;
-		}
-	}
-
-	@keyframes cycle {
-		0% {
-			--u1: #D6EEFF;
-			--u2: #77B3F2;
-			--u3: #5A8ACE;
-			--u4: #885182;
-			--u5: #C9554E;
-		}
-
-		20% {
-			--u1: #C9554E;
-			--u2: #D6EEFF;
-			--u3: #77B3F2;
-			--u4: #5A8ACE;
-			--u5: #885182;
-		}
-
-		40% {
-			--u1: #885182;
-			--u2: #C9554E;
-			--u3: #D6EEFF;
-			--u4: #77B3F2;
-			--u5: #5A8ACE;
-		}
-
-		60% {
-			--u1: #5A8ACE;
-			--u2: #885182;
-			--u3: #C9554E;
-			--u4: #D6EEFF;
-			--u5: #77B3F2;
-		}
-
-		80% {
-			--u1: #77B3F2;
-			--u2: #5A8ACE;
-			--u3: #885182;
-			--u4: #C9554E;
-			--u5: #D6EEFF;
-		}
-
-		100% {
-			--u1: #D6EEFF;
-			--u2: #77B3F2;
-			--u3: #5A8ACE;
-			--u4: #885182;
-			--u5: #C9554E;
-		}
 	}
 </style>

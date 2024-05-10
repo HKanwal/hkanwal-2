@@ -2,9 +2,14 @@
 interface Props {
 	href: string;
 	style?: string;
+	borderRadius?: string;
+	padding?: string;
 }
 
-const { href, style } = Astro.props;
+let { href, style, borderRadius, padding } = Astro.props;
+
+borderRadius = borderRadius ?? "20%";
+padding = padding ?? "12px";
 ---
 
 <a class="badge" href={href} target="_blank" style={style}>
@@ -12,13 +17,7 @@ const { href, style } = Astro.props;
 	<slot />
 </a>
 
-<style>
-	@property --r {
-		syntax: '<angle>';
-		initial-value: 135deg;
-		inherits: false;
-	}
-
+<style define:vars={{ borderRadius, padding }}>
 	@property --c1 {
 		syntax: '<color>';
 		initial-value: #D6EEFF;
@@ -52,27 +51,29 @@ const { href, style } = Astro.props;
 	.badge {
 		display: flex;
 		position: relative;
-		width: 70px;
-		height: 70px;
+		padding: var(--padding);
 		align-items: center;
 		justify-content: center;
+		text-decoration: none;
 	}
 
 	.badge-border {
 		content: "";
 		position: absolute;
 		inset: 0;
-		border-radius: 20%;
-		padding: 6px;
+		border-radius: var(--borderRadius);
+		padding: 2px;
 		background: white;
 		mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 		mask-composite: exclude;
 		filter: saturate(1.3);
+		transition: padding 0.1s;
 	}
 
-	.badge-border:hover {
+	.badge-border:hover, .badge:focus .badge-border {
 		cursor: pointer;
-		background: linear-gradient(var(--r), var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
+		padding: 6px;
+		background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
 		animation: rainbow 3s linear infinite;
 	}
 
