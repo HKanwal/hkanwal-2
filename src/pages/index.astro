@@ -1,27 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
+import Email from "../components/Email.astro";
+import type { TransitionAnimationPair, TransitionDirectionalAnimations } from "astro";
+import { fade, slide } from "astro:transitions";
+
+const forwardSlide: TransitionAnimationPair = {
+	old: {
+		name: "mySlide",
+		duration: "10s",
+		easing: "linear",
+	},
+	new: {
+		name: "mySlide",
+		duration: "20s",
+		easing: "linear",
+	}
+};
+
+const backwardSlide: TransitionAnimationPair = {
+	old: {
+		name: "doNothing",
+	},
+	new: {
+		name: "doNothing",
+	},
+}
+
+const mySlide: TransitionDirectionalAnimations = {
+	forwards: forwardSlide,
+	backwards: forwardSlide,
+}
+
 ---
 
-<Layout title="hkanwal.com">
+<Layout title="hkanwal.com" transitions>
 	<main>
 		<h1 id="name">Harkeerat Kanwal</h1>
 		<section id="brief">
 			web developer - mobile app developer - full-stack engineer
 		</section>
-		<Badge href="#" style="margin-top: 80px;" borderRadius="20px" padding="8px 25px">
+		<Badge href="/works" style="margin-top: 80px;" borderRadius="20px" padding="8px 25px">
 			<span id="works">works</span>
 		</Badge>
 		<div id="external-links">
-			<Badge href="https://github.com/HKanwal">
+			<Badge href="https://github.com/HKanwal" target="_blank">
 				<img src="/favicon-github.svg" height="46px" width="46px" alt="GitHub Logo" />
 			</Badge>
-			<Badge href="https://www.linkedin.com/in/hkanwal/" style="margin-left: 20px;">
+			<Badge href="https://www.linkedin.com/in/hkanwal/" target="_blank" style="margin-left: 20px;">
 				<img src="/favicon-linkedin.svg" height="46px" width="46px" alt="LinkedIn Logo" />
 			</Badge>
 		</div>
 	</main>
-	<span id="email">hk@hkanwal.com</span>
+	<!-- <Email transition:name="email" transition:animate="slide" /> -->
+	<span id="email" transition:name="email">hk@hkanwal.com</span>
 </Layout>
 
 <script>
@@ -88,6 +120,22 @@ import Badge from "../components/Badge.astro";
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	@keyframes mySlide {
+		0% {
+			transform: translateX(0px);
+		}
+
+		100% {
+			transform: translateX(600px);
+		}
+	}
+
+	@keyframes doNothing {
+		0% {}
+
+		100% {}
 	}
 
 	#email {

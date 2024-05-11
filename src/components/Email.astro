@@ -1,0 +1,21 @@
+---
+interface Props {
+	style?: string;
+}
+
+const { style } = Astro.props;
+---
+
+<span id="email" style={style}>hk@hkanwal.com</span>
+
+<style>
+  #email {
+		color: white;
+		font-size: 1em;
+		font-family: "Manrope", sans-serif;
+		font-weight: 500;
+		position: absolute;
+		bottom: 25px;
+		left: 15px;
+	}
+</style>

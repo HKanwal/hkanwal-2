@@ -4,15 +4,16 @@ interface Props {
 	style?: string;
 	borderRadius?: string;
 	padding?: string;
+	target?: "_self" | "_blank" | "_parent" | "_top";
 }
 
-let { href, style, borderRadius, padding } = Astro.props;
+let { href, style, borderRadius, padding, target } = Astro.props;
 
 borderRadius = borderRadius ?? "20%";
 padding = padding ?? "12px";
 ---
 
-<a class="badge" href={href} target="_blank" style={style}>
+<a class="badge" href={href} target={target} style={style}>
 	<div class="badge-border"></div>
 	<slot />
 </a>
