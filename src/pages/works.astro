@@ -1,68 +1,26 @@
 ---
-import { slide } from "astro:transitions";
-
+import Card from "../components/Card.astro";
 import Email from "../components/Email.astro";
+import Source from "../components/Source.astro";
 import Layout from "../layouts/Layout.astro";
-import type { TransitionAnimationPair, TransitionDirectionalAnimations } from "astro";
-
-const forwardSlide: TransitionAnimationPair = {
-	old: {
-		name: "mySlide",
-		duration: "5s",
-		easing: "linear",
-    fillMode: "both",
-	},
-	new: {
-		name: "mySlide",
-		duration: "5s",
-		easing: "linear",
-    fillMode: "forwards",
-	}
-};
-
-const backwardSlide: TransitionAnimationPair = {
-	old: {
-		name: "doNothing",
-	},
-	new: {
-		name: "doNothing",
-	},
-}
-
-const mySlide: TransitionDirectionalAnimations = {
-	forwards: forwardSlide,
-	backwards: backwardSlide,
-}
 ---
 
 <Layout title="Works" transitions>
-  <span id="email" transition:name="email" transition:animate={mySlide}>hk@hkanwal.com</span>
+  <div id="cards">
+    <Card title="Quaternion Motion" href="https://hkanwal.github.io/quaternions/" />
+    <Card title="AI Todolist" href="https://hkanwal.github.io/ai-todolist/" style="margin-top: 20px;" />
+  </div>
+  <Email />
+  <Source />
 </Layout>
 
 <style>
-  #email {
-		color: red;
-		font-size: 1em;
-		font-family: "Manrope", sans-serif;
-		font-weight: 500;
-		position: absolute;
-		bottom: 25px;
-		left: 15px;
-	}
-
-  @keyframes mySlide {
-		0% {
-			left: 15px;
-		}
-
-		100% {
-			left: 215px;
-		}
-	}
-
-	@keyframes doNothing {
-		0% {}
-
-		100% {}
-	}
+  #cards {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
