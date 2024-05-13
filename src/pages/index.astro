@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 import Email from "../components/Email.astro";
 import Source from "../components/Source.astro";
+import CardList from "../components/CardList.astro";
 ---
 
 <Layout title="hkanwal.com" transitions>
@@ -11,7 +12,7 @@ import Source from "../components/Source.astro";
 		<section id="brief">
 			web developer - mobile app developer - full-stack engineer
 		</section>
-		<Badge href="/works" style="margin-top: 80px;" borderRadius="20px" padding="8px 25px">
+		<Badge href="#works" style="margin-top: 80px;" borderRadius="20px" padding="8px 25px">
 			<span id="works-btn">works</span>
 		</Badge>
 		<div id="external-links">
@@ -23,6 +24,9 @@ import Source from "../components/Source.astro";
 			</Badge>
 		</div>
 	</div>
+	<section id="works">
+		<CardList title="Works" />
+	</section>
 	<Email />
 	<Source />
 </Layout>
@@ -45,21 +49,6 @@ import Source from "../components/Source.astro";
 		if (el) {
 			el.style.backgroundPosition = traX + "% " + traY + "%";
 		}
-	};
-</script>
-
-<script>
-	import { navigate } from "astro:transitions/client";
-
-	const worksLink = document.querySelector("a[href='/works']") as HTMLLinkElement;
-	const page = document.querySelector("#main") as HTMLElement;
-
-	worksLink.onclick = (e: MouseEvent) => {
-		e.preventDefault();
-
-		page.classList.add("slideLeft");
-
-		// navigate("/works");
 	};
 </script>
 
@@ -110,20 +99,10 @@ import Source from "../components/Source.astro";
 	}
 
 	#works {
+		margin-top: 25vh;
 		height: 100vh;
-	}
-
-	.slideLeft {
-		animation: slideLeft 0.5s ease forwards;
-	}
-
-	@keyframes slideLeft {
-		0% {
-			opacity: 100%;
-		}
-
-		100% {
-			opacity: 0;
-		}
+		
+		display: flex;
+		justify-content: center;
 	}
 </style>

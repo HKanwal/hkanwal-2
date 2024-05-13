@@ -8,13 +8,25 @@ interface Props {
 const { title, href, style } = Astro.props;
 ---
 
-<a class="card" href={href} style={style ?? ""}>{title}</a>
+<div class="card-container" style={style ?? ""}>
+  <a class="card" href={href} target="_blank">{title}</a>
+</div>
 
 <style>
+  .card-container {
+    width: 560px;
+    height: 73px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .card {
-    position: relative;
+    display: block;
     background-color: #252830;
     width: 500px;
+    height: 33px;
     padding: 15px 25px;
     border-radius: 20px;
 
@@ -27,7 +39,7 @@ const { title, href, style } = Astro.props;
   }
 
   .card:hover, .card:focus {
-    padding: 20px 25px;
+    padding: 20px 30px;
     color: #77B3F2;
     outline: none;
   }
