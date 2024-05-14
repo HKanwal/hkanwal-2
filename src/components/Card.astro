@@ -12,6 +12,16 @@ const { title, href, style } = Astro.props;
   <a class="card" href={href} target="_blank">{title}</a>
 </div>
 
+<script>
+  document.onvisibilitychange = () => {
+    if (!document.hidden) {
+      if (document.activeElement?.tagName === "A") {
+        (document.activeElement as HTMLLinkElement).blur();
+      }
+    }
+  }
+</script>
+
 <style>
   .card-container {
     width: 560px;
