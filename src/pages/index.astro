@@ -35,21 +35,39 @@ import CardList from "../components/CardList.astro";
 	let mouseX, mouseY;
 	let traX, traY;
 	const ww = window.innerWidth;
+	const onMobile = ww <= 480;
 
-	document.onmousemove = (e) => {
-		mouseX = e.pageX;
-		mouseY = e.pageY;
-		if (mouseX < ww / 2) {
-			traX = 73 - ((4 * (ww / 2 - mouseX)) / 450)
-		} else {
-			traX = 73 + ((4 * (mouseX - ww / 2)) / 450);
+	if (onMobile) {
+		document.ontouchmove = (e) => {
+			mouseX = e.changedTouches[0].pageX;
+			mouseY = e.changedTouches[0].pageY;
+			if (mouseX < ww / 2) {
+				traX = 65 - ((4 * (ww / 2 - mouseX)) / 450)
+			} else {
+				traX = 65 + ((4 * (mouseX - ww / 2)) / 450);
+			}
+			traY = ((4 * mouseY) / 450) + 50;
+			const el = document.getElementById("name");
+			if (el) {
+				el.style.backgroundPosition = traX + "% " + traY + "%";
+			}
 		}
-		traY = ((4 * mouseY) / 450) + 50;
-		const el = document.getElementById("name");
-		if (el) {
-			el.style.backgroundPosition = traX + "% " + traY + "%";
-		}
-	};
+	} else {	
+		document.onmousemove = (e) => {
+			mouseX = e.pageX;
+			mouseY = e.pageY;
+			if (mouseX < ww / 2) {
+				traX = 73 - ((4 * (ww / 2 - mouseX)) / 450)
+			} else {
+				traX = 73 + ((4 * (mouseX - ww / 2)) / 450);
+			}
+			traY = ((4 * mouseY) / 450) + 50;
+			const el = document.getElementById("name");
+			if (el) {
+				el.style.backgroundPosition = traX + "% " + traY + "%";
+			}
+		};
+	}
 </script>
 
 <style>
@@ -68,7 +86,7 @@ import CardList from "../components/CardList.astro";
 		letter-spacing: -2px;
 		line-height: 90%;
 
-		background: url("red-and-blue-star.jpg") repeat;
+		background: url("/red-and-blue-star.jpg") repeat;
 		background-position: 73% 50%;
 		background-clip: text;
 		color: transparent;
@@ -78,6 +96,23 @@ import CardList from "../components/CardList.astro";
 	#brief {
 		font-size: 1.5em;
 		font-family: "Manrope", sans-serif;
+	}
+
+	@media (max-width: 480px) {
+		#home {
+			justify-content: flex-start;
+		}
+
+		#name {
+			text-align: center;
+			font-size: 5rem;
+			margin-top: 10vh;
+			background-position: 65% 50%;
+		}
+
+		#brief {
+			text-align: center;
+		}
 	}
 
 	#external-links {
@@ -99,6 +134,7 @@ import CardList from "../components/CardList.astro";
 	}
 
 	#works {
+		position: relative;
 		margin-top: 25vh;
 		height: 100vh;
 		

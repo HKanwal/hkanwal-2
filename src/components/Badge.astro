@@ -71,11 +71,13 @@ padding = padding ?? "12px";
 		transition: padding 0.1s;
 	}
 
-	.badge-border:hover, .badge:focus .badge-border {
-		cursor: pointer;
-		padding: 6px;
-		background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
-		animation: rainbow 3s linear infinite;
+	@media (min-width: 481px) {	
+		.badge-border:hover, .badge:focus .badge-border {
+			cursor: pointer;
+			padding: 6px;
+			background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
+			animation: rainbow 3s linear infinite;
+		}
 	}
 
 	@keyframes rainbow {

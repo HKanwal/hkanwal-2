@@ -33,7 +33,8 @@ const { title, href, style } = Astro.props;
   }
 
   .card {
-    display: block;
+    display: flex;
+    align-items: center;
     background-color: #252830;
     width: 500px;
     height: 33px;
@@ -48,9 +49,22 @@ const { title, href, style } = Astro.props;
     transition: padding 0.2s ease;
   }
 
-  .card:hover, .card:focus {
-    padding: 20px 30px;
-    color: #77B3F2;
-    outline: none;
+  @media (min-width: 481px) { 
+    .card:hover, .card:focus {
+      padding: 20px 30px;
+      color: #77B3F2;
+      outline: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-container {
+      width: 98%;
+    }
+
+    .card {
+      width: calc(98% - 60px);
+      font-size: 1.4em;
+    }
   }
 </style>
