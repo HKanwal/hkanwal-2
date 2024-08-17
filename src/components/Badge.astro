@@ -1,132 +1,136 @@
 ---
 interface Props {
-	href?: string;
-	style?: string;
-	borderRadius?: string;
-	padding?: string;
-	target?: "_self" | "_blank" | "_parent" | "_top";
+  id?: string;
+  href?: string;
+  style?: string;
+  borderRadius?: string;
+  padding?: string;
+  target?: '_self' | '_blank' | '_parent' | '_top';
 }
 
-let { href, style, borderRadius, padding, target } = Astro.props;
+let { id, href, style, borderRadius, padding, target } = Astro.props;
 
-borderRadius = borderRadius ?? "20%";
-padding = padding ?? "12px";
+borderRadius = borderRadius ?? '20%';
+padding = padding ?? '12px';
 ---
 
-<a class="badge" href={href} target={target} style={style ?? ""}>
-	<div class="badge-border"></div>
-	<slot />
+<a id={id} class='badge' href={href} target={target} style={style ?? ''}>
+  <div class='badge-border'></div>
+  <slot />
 </a>
 
 <style define:vars={{ borderRadius, padding }}>
-	@property --c1 {
-		syntax: '<color>';
-		initial-value: #D6EEFF;
-		inherits: false;
-	}
+  @property --c1 {
+    syntax: '<color>';
+    initial-value: #d6eeff;
+    inherits: false;
+  }
 
-	@property --c2 {
-		syntax: '<color>';
-		initial-value: #77B3F2;
-		inherits: false;
-	}
+  @property --c2 {
+    syntax: '<color>';
+    initial-value: #77b3f2;
+    inherits: false;
+  }
 
-	@property --c3 {
-		syntax: '<color>';
-		initial-value: #5A8ACE;
-		inherits: false;
-	}
+  @property --c3 {
+    syntax: '<color>';
+    initial-value: #5a8ace;
+    inherits: false;
+  }
 
-	@property --c4 {
-		syntax: '<color>';
-		initial-value: #885182;
-		inherits: false;
-	}
+  @property --c4 {
+    syntax: '<color>';
+    initial-value: #885182;
+    inherits: false;
+  }
 
-	@property --c5 {
-		syntax: '<color>';
-		initial-value: #C9554E;
-		inherits: false;
-	}
+  @property --c5 {
+    syntax: '<color>';
+    initial-value: #c9554e;
+    inherits: false;
+  }
 
-	.badge {
-		display: flex;
-		position: relative;
-		padding: var(--padding);
-		align-items: center;
-		justify-content: center;
-		text-decoration: none;
-	}
+  .badge {
+    display: flex;
+    position: relative;
+    padding: var(--padding);
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
 
-	.badge-border {
-		content: "";
-		position: absolute;
-		inset: 0;
-		border-radius: var(--borderRadius);
-		padding: 2px;
-		background: white;
-		mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-		mask-composite: exclude;
-		filter: saturate(1.3);
-		transition: padding 0.1s;
-	}
+  .badge-border {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--borderRadius);
+    padding: 2px;
+    background: white;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    filter: saturate(1.3);
+    transition: padding 0.1s;
+  }
 
-	@media (min-width: 481px) {	
-		.badge-border:hover, .badge:focus .badge-border {
-			cursor: pointer;
-			padding: 6px;
-			background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
-			animation: rainbow 3s linear infinite;
-		}
-	}
+  @media (min-width: 481px) {
+    .badge-border:hover,
+    .badge:focus .badge-border {
+      cursor: pointer;
+      padding: 6px;
+      background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
+      animation: rainbow 3s linear infinite;
+    }
+  }
 
-	@keyframes rainbow {
-		0% {
-			--c1: #D6EEFF;
-			--c2: #77B3F2;
-			--c3: #5A8ACE;
-			--c4: #885182;
-			--c5: #C9554E;
-		}
+  @keyframes rainbow {
+    0% {
+      --c1: #d6eeff;
+      --c2: #77b3f2;
+      --c3: #5a8ace;
+      --c4: #885182;
+      --c5: #c9554e;
+    }
 
-		20% {
-			--c1: #C9554E;
-			--c2: #D6EEFF;
-			--c3: #77B3F2;
-			--c4: #5A8ACE;
-			--c5: #885182;
-		}
+    20% {
+      --c1: #c9554e;
+      --c2: #d6eeff;
+      --c3: #77b3f2;
+      --c4: #5a8ace;
+      --c5: #885182;
+    }
 
-		40% {
-			--c1: #885182;
-			--c2: #C9554E;
-			--c3: #D6EEFF;
-			--c4: #77B3F2;
-			--c5: #5A8ACE;
-		}
+    40% {
+      --c1: #885182;
+      --c2: #c9554e;
+      --c3: #d6eeff;
+      --c4: #77b3f2;
+      --c5: #5a8ace;
+    }
 
-		60% {
-			--c1: #5A8ACE;
-			--c2: #885182;
-			--c3: #C9554E;
-			--c4: #D6EEFF;
-			--c5: #77B3F2;
-		}
+    60% {
+      --c1: #5a8ace;
+      --c2: #885182;
+      --c3: #c9554e;
+      --c4: #d6eeff;
+      --c5: #77b3f2;
+    }
 
-		80% {
-			--c1: #77B3F2;
-			--c2: #5A8ACE;
-			--c3: #885182;
-			--c4: #C9554E;
-			--c5: #D6EEFF;
-		}
+    80% {
+      --c1: #77b3f2;
+      --c2: #5a8ace;
+      --c3: #885182;
+      --c4: #c9554e;
+      --c5: #d6eeff;
+    }
 
-		100% {
-			--c1: #D6EEFF;
-			--c2: #77B3F2;
-			--c3: #5A8ACE;
-			--c4: #885182;
-			--c5: #C9554E;
-		}
-	}
+    100% {
+      --c1: #d6eeff;
+      --c2: #77b3f2;
+      --c3: #5a8ace;
+      --c4: #885182;
+      --c5: #c9554e;
+    }
+  }
 </style>

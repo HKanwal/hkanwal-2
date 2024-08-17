@@ -1,6 +1,6 @@
 ---
-import Card from "./Card.astro";
-import { Icon } from 'astro-icon/components'
+import Card from './Card.astro';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   title: string;
@@ -9,29 +9,33 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div id="card-list">
-  <a id="back-btn" href="#home">
-    <div id="ripple"></div>
-    <Icon name="ep--arrow-up" class="up-arrow" height={45} width={45} />
+<div id='card-list'>
+  <a id='back-btn'>
+    <div id='ripple'></div>
+    <Icon name='ep--arrow-up' class='up-arrow' height={45} width={45} />
   </a>
-  <h2 id="list-title">{title}</h2>
-  <Card title="Quaternion Motion" href="https://hkanwal.github.io/quaternions/" style="margin-top: 20px;" />
-  <Card title="AI Todolist" href="https://hkanwal.github.io/ai-todolist/" style="margin-top: 15px;" />
+  <h2 id='list-title'>{title}</h2>
+  <Card title='Quaternion Motion' href='https://hkanwal.github.io/quaternions/' style='margin-top: 20px;' />
+  <Card title='AI Todolist' href='https://hkanwal.github.io/ai-todolist/' style='margin-top: 15px;' />
 </div>
 
 <script>
-  const backBtn = document.getElementById("back-btn") as HTMLLinkElement;
-  const ripple = document.getElementById("ripple") as HTMLDivElement;
+  const backBtn = document.getElementById('back-btn') as HTMLLinkElement;
+  const ripple = document.getElementById('ripple') as HTMLDivElement;
   const rippleEnabled = false;
 
   backBtn.onclick = (e: MouseEvent) => {
     if (rippleEnabled) {
-      ripple.classList.remove("ripple");
+      ripple.classList.remove('ripple');
       ripple.style.left = `${e.offsetX - 400}px`;
       ripple.style.top = `${e.offsetY - 400}px`;
-      ripple.classList.add("ripple");
+      ripple.classList.add('ripple');
     }
   };
+
+  backBtn.addEventListener('click', () => {
+    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+  });
 </script>
 
 <style>
@@ -65,11 +69,17 @@ const { title } = Astro.props;
     opacity: 0.3;
   }
 
-  #back-btn:hover, #back-btn:active {
+  #back-btn:hover {
+    cursor: pointer;
+  }
+
+  #back-btn:hover,
+  #back-btn:active {
     background-color: #252830;
   }
 
-  #back-btn:hover > .up-arrow, #back-btn:active > .up-arrow {
+  #back-btn:hover > .up-arrow,
+  #back-btn:active > .up-arrow {
     color: white;
     opacity: 0.7;
   }
@@ -83,7 +93,7 @@ const { title } = Astro.props;
     opacity: 0.5;
     position: absolute;
     pointer-events: none;
-    
+
     animation: ripple 0.3s linear;
   }
 
@@ -100,7 +110,7 @@ const { title } = Astro.props;
     margin: 0;
     margin-top: 25px;
 
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 3em;
     font-weight: 300;
   }

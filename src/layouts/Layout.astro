@@ -2,58 +2,62 @@
 import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
-	title: string;
-	transitions?: boolean;
+  title: string;
+  transitions?: boolean;
 }
 
 const { title, transitions } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Personal website of Harkeerat Kanwal" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+<html lang='en' transition:animate='none'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Personal website of Harkeerat Kanwal' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
 
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..500&family=Unbounded:wght@250..400&display=swap" rel="stylesheet">
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap' rel='stylesheet' />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Manrope:wght@300..500&family=Unbounded:wght@250..400&display=swap'
+      rel='stylesheet'
+    />
 
-		{transitions && <ViewTransitions />}
-	</head>
-	<body>
-		<slot />
-	</body>
+    {transitions && <ViewTransitions />}
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
+<script src='/smoothscroll.min.js' is:inline></script>
+
 <style>
-	html {
-		background-color: #13151a;
-		color: white;
-		font-family: "Roboto", sans-serif;
-		margin: 0;
-		width: 100%;
-		height: 100%;
+  html {
+    background-color: #13151a;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+  }
 
-		scroll-behavior: smooth;
-	}
-
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		overflow-y: hidden;
-	}
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+  }
 </style>
 
 <style is:global>
-	::selection {
-		color: black;
-		background: white;
-	}
+  ::selection {
+    color: black;
+    background: white;
+  }
 </style>
